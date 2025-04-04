@@ -1,5 +1,8 @@
 <script setup>
 import { MapPin, Navigation } from "lucide-vue-next";
+import {ref} from "vue";
+const tab = ref("rn");
+
 </script>
 
 <template>
@@ -39,4 +42,21 @@ import { MapPin, Navigation } from "lucide-vue-next";
 			</div>
 		</div>
 	</div>
+
+	<div class="bg-gray-200 flex gap-1 p-1 rounded-md m-4 h-10">
+		<button @click="tab = 'rn'" class="w-full rounded-sm" :class="[tab === 'rn' ? 'bg-white text-black' : 'text-gray-500']">blabla</button>
+		<button @click="tab = 'lt'" class="w-full rounded-sm" :class="[tab === 'lt' ? 'bg-white text-black' : 'text-gray-500']">balbal</button>
+	</div>
+
+	<div v-if="tab === 'rn'">
+		<span>Pickup as soon as possible</span>
+	</div>
+
+		<div v-if="tab === 'lt'">
+		<span>Pickup as soon as possible</span>
+		<span>Pickup as soon as possible</span>
+		<span>Pickup as soon as possible</span>
+		<span>Pickup as soon as possible</span>
+	</div>
+	
 </template>
