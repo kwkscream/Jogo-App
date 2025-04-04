@@ -9,7 +9,8 @@ import (
 	"github.com/go-resty/resty/v2"
 	"github.com/joho/godotenv"
 	"log"
-  "os"
+  	"os"
+  	"path/filepath"
 )
 
 type QueryParams struct {
@@ -82,8 +83,10 @@ func main() {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
 	router := gin.Default()
-	router.GET("/search", func(c *gin.Context) {
+  
+	router.GET("/api/search", func(c *gin.Context) {
 		var query QueryParams
 		if err := c.ShouldBindQuery(&query); err != nil {
 			c.JSON(404, gin.H{"error": err.Error()})
@@ -101,6 +104,12 @@ func main() {
 		c.JSON(200, places.Results)
 
 	})
+	// router.Static("/", "../front/dist")
+	router.Static("/assets","../front/dist/assets")
+	router.NoRoute(func(c *gin.Context) {
+		c.File(filepath.Join("../front/dist", "index.html"))
+	})
+	// router.StaticFi("/", "../front/dist")
 
 	router.Run()
 }
