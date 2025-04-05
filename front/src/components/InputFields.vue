@@ -1,7 +1,11 @@
 <script setup>
 import { MapPin, Navigation } from "lucide-vue-next";
 import {ref} from "vue";
+import { useBottomSheet } from '@/stores/useBottomSheet'
+
 const tab = ref("rn");
+
+const location_selector = useBottomSheet();
 
 </script>
 
@@ -30,14 +34,16 @@ const tab = ref("rn");
 		<div class="flex flex-col p-4 w-full gap-4">
 			<div class="w-full min-w-[200px]">
 				<input
+					@click="location_selector.changeLocationVisible"
 					class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-4 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
 					placeholder="Pickup location"
 				/>
 			</div>
 			<div class="w-full min-w-[200px]">
 				<input
+					@click="location_selector.changeLocationVisible"
 					class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-4 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-					placeholder="Destination"
+					placeholder="Destination" 
 				/>
 			</div>
 		</div>
