@@ -19,15 +19,13 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: Navigate to front folder
-        run: cd front
-
       - name: Install dependencies with Yarn
         run: yarn install
+        working-directory: front
 
       - name: Build Vite app
         run: yarn build
-
+        working-directory: front
       # Optional: Add steps for testing if you have tests
       # - name: Run tests
       #   run: yarn test
