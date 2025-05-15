@@ -19,22 +19,25 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Navigate to front folder
+        run: cd front
+
+      - name: Install dependencies with Yarn
+        run: yarn install
 
       - name: Build Vite app
-        run: npm run build
+        run: yarn build
 
       # Optional: Add steps for testing if you have tests
       # - name: Run tests
-      #   run: npm run test
+      #   run: yarn test
 
       # Optional: Add steps for deployment (e.g., to GitHub Pages, Netlify, etc.)
-      # Example for deploying to GitHub Pages:
+      # Example for deploying to GitHub Pages (adjust folder path if needed):
       # - name: Deploy to GitHub Pages
       #   if: github.ref == 'refs/heads/main'
       #   uses: JamesIves/github-pages-deploy-action@v4
       #   with:
       #     token: ${{ secrets.GITHUB_TOKEN }}
       #     branch: gh-pages
-      #     folder: dist
+      #     folder: front/dist
